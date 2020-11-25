@@ -3,7 +3,7 @@
  (action
   (with-stdout-to
    %{targets}
-   (run ../opam_tools.exe --help=plain))))
+   (run %{bin:opam-tools} --help=plain))))
 
 (rule
  (targets usage.md)

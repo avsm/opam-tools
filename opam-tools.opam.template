@@ -1,5 +1,1 @@
-build: [
-  ["dune" "subst"] {dev}
-  [ "dune" "build" name "-j" jobs "@install" ]
-]
-flags: plugin
+flags: [ plugin ]

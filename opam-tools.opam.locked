@@ -1,0 +1,58 @@
+opam-version: "2.0"
+name: "opam-tools"
+version: "~dev"
+synopsis: "Initialise a local OCaml development environment"
+description:
+  "opam-tools sets up a local project to have a working set of opam libraries and development tools such as dune, odoc, ocamlformat and IDE helpers like merlin and ocaml-lsp.  This is all made available by simply typing in `opam tools` in your project directory."
+maintainer: "anil@recoil.org"
+authors: "Anil Madhavapeddy"
+license: "ISC"
+homepage: "https://github.com/ocaml-opam/opam-tools"
+bug-reports: "https://github.com/ocaml-opam/opam-tools/issues"
+depends: [
+  "astring" {= "0.8.5"}
+  "base-threads" {= "base"}
+  "base-unix" {= "base"}
+  "bigarray-compat" {= "1.0.0"}
+  "bos" {= "0.2.0"}
+  "cmdliner" {= "1.0.4"}
+  "conf-m4" {= "1"}
+  "cstruct" {= "6.0.0"}
+  "dune" {= "2.7.1"}
+  "dune-build-info" {= "2.7.1"}
+  "ezjsonm" {= "1.2.0"}
+  "fmt" {= "0.8.9"}
+  "fpath" {= "0.7.3"}
+  "hex" {= "1.4.0"}
+  "jsonm" {= "1.0.1+dune"}
+  "logs" {= "0.7.0"}
+  "ocaml" {= "4.11.1"}
+  "ocaml-config" {= "1"}
+  "ocaml-version" {= "3.0.0"}
+  "ocamlbuild" {= "0.14.0"}
+  "ocamlfind" {= "1.8.1"}
+  "result" {= "1.5"}
+  "rresult" {= "0.6.0"}
+  "seq" {= "base"}
+  "sexplib0" {= "v0.14.0"}
+  "stdlib-shims" {= "0.1.0"}
+  "topkg" {= "1.0.3"}
+  "uchar" {= "0.0.2+dune"}
+  "uutf" {= "1.0.2+dune"}
+]
+flags: plugin
+build: [
+  ["dune" "subst"] {pinned}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/ocaml-opam/opam-tools.git"

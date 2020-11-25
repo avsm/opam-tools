@@ -1,0 +1,3 @@
+(library
+ (name opam_tools_lib)
+ (libraries rresult ocaml-version bos logs fmt))
